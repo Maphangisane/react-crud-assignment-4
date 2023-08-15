@@ -1,0 +1,5 @@
+1 upload image 
+2 download image from preview into assets
+3 use path to display image 
+
+search how jsonify an img
