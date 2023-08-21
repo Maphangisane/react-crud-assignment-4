@@ -1,24 +1,19 @@
 {
   "members": [
     {
-      "name": "Thabang Maphangisane",
-      "job": "Software Developer",
-      "id": 1
+      "id": "21595bc7-9e04-4c3a-b19a-1f0dd8b4e1ba",
+      "name": "Thabang Hezekiel Maphangisane",
+      "job": "Software Developer "
     },
     {
-      "name": "Thabang Maphangisane",
-      "job": "Software Developer",
-      "id": 2
+      "id": "44f74dff-e05c-4d3a-9eaa-b75bde53932f",
+      "name": "Thabang Hezekiel Maphangisane",
+      "job": "intern"
     },
     {
-      "name": "Thabag",
-      "job": "",
-      "id": 3
-    },
-    {
-      "name": "thabag2",
-      "job": "",
-      "id": 4
+      "id": "c37de76a-8a96-496b-aa9b-17a5d7d38ac7",
+      "name": "Siyabonga ",
+      "job": "Developer"
     }
   ]
 }

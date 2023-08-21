@@ -1,59 +1,67 @@
-//Imports
-import { useState } from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 
-// Definitions
-const EditMember = ( {onEdit} ) => {
+class EditMember extends React.Component {
+  constructor(props) {
+    super(props);
+    const { id, name, job } = props.location.state.member;
+    this.state = {
+      id,
+      name,
+      job,
+    };
+  }
 
-    // State Management
-    const [name, setName] = useState('')
-    const [job, setJob] = useState('')
-    // const [reminder, setReminder] = useState(false)
-    
-    // onsubmit function
-    const onSubmit = (e) => {
-        e.preventDefault()
-
-        // validation
-        if (!name) {
-            alert('Please add a Member')
-            return
-        }
-        // call on add method and pass in text day and reminder as objects
-
-        onEdit({name, job})
-
-        // clear form
-        setName('')
-        setJob('')
-
+  update = (e) => {
+    e.preventDefault();
+    if (this.state.name === "" || this.state.job === "") {
+      alert("ALl the fields are mandatory!");
+      return;
     }
+    this.props.updateMemberHandler(this.state);
+    this.setState({ name: "", job: "" });
+    this.props.history.push("/");
+  };
+  render() {
+    return (
+      <div className="ui main">
+                {/* back button */}
+                <div className="center-div">
+        <Link to="/">
+          <button className="ui button blue center">
+            Back to Member List
+          </button>
+        </Link>
+      </div>
+      
+        <h2>Edit Member</h2>
 
-// Returns    
-  return (
-    <form className='add-form' onSubmit={onSubmit}>
-        <div className="form-control">
+        <form className="ui form" onSubmit={this.update}>
+          <div className="field">
             <label>Name</label>
             <input
-                 type='text'
-                 placeholder='Add Member' 
-                 value={name}
-                 onChange={(e) => setName(e.target.value)}
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={this.state.name}
+              onChange={(e) => this.setState({ name: e.target.value })}
             />
-        </div>
-        
-        <div className="form-control">
+          </div>
+          <div className="field">
             <label>Job Title</label>
-            <input 
-                type='text' 
-                placeholder='Job Title'
-                value={job}
-                onChange={(e) => setJob(e.target.value)}
+            <input
+              type="text"
+              name="job"
+              placeholder="Job Title"
+              value={this.state.job}
+              onChange={(e) => this.setState({ job: e.target.value })}
             />
-        </div>
-
-        <input type="submit" value="Save Member" className="btn btn-block"/>
-    </form>
-  )
+          </div>
+          <button className="ui button blue">Update</button>
+        </form>
+      </div>
+    );
+  }
 }
 
-export default EditMember
+export default EditMember;

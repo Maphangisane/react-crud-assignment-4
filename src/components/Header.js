@@ -1,31 +1,13 @@
-// Imports
-import PropTypes from 'prop-types'
-import Button from './Button'
+import React from "react";
 
-// Definitions
-// const Header = ({title}) => {
-const Header = ({ title, onAdd, showAdd }) => {
-
-//Returns
+const Header = () => {
   return (
-    <header className='header'>
-        <h1>{title}</h1>
-        <Button 
-            color= {showAdd ? 'red' : 'green'}
-            text= {showAdd ? 'Close' : 'Add'} 
-            onClick= {onAdd} 
-         />
-    </header>
-  )
-}
+    <div className="ui fixed menu">
+      <div className="ui container center">
+        <h2>Member Manager</h2>
+      </div>
+    </div>
+  );
+};
 
-Header.defaultProps = {
-    title: 'Member'
-}
-// Proptypes -built in type system (impt) 
-Header.propTypes = {
-    title: PropTypes.string.isRequired,
-}
-
-//Exports
-export default Header
+export default Header;
