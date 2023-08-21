@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 class EditMember extends React.Component {
   constructor(props) {
     super(props);
+    // update State inherited
     const { id, name, job } = props.location.state.member;
     this.state = {
       id,
@@ -12,6 +13,7 @@ class EditMember extends React.Component {
     };
   }
 
+  // update function
   update = (e) => {
     e.preventDefault();
     if (this.state.name === "" || this.state.job === "") {
@@ -20,23 +22,29 @@ class EditMember extends React.Component {
     }
     this.props.updateMemberHandler(this.state);
     this.setState({ name: "", job: "" });
-    this.props.history.push("/");
+    this.props.history.push("/"); // programmatic rendering
   };
+
   render() {
     return (
       <div className="ui main">
-                {/* back button */}
-                <div className="center-div">
-        <Link to="/">
-          <button className="ui button blue center">
-            Back to Member List
-          </button>
-        </Link>
-      </div>
-      
+
+        {/* back button */}
+        <div className="center-div">
+          <Link to="/">
+            <button className="ui button blue center">
+              Back to Member List
+            </button>
+          </Link>
+        </div>
+
+        {/* Heading */}
         <h2>Edit Member</h2>
 
+        {/* update Form */}
         <form className="ui form" onSubmit={this.update}>
+
+          {/* name input field*/}
           <div className="field">
             <label>Name</label>
             <input
@@ -47,6 +55,8 @@ class EditMember extends React.Component {
               onChange={(e) => this.setState({ name: e.target.value })}
             />
           </div>
+
+          {/* job input field*/}
           <div className="field">
             <label>Job Title</label>
             <input
@@ -57,6 +67,8 @@ class EditMember extends React.Component {
               onChange={(e) => this.setState({ job: e.target.value })}
             />
           </div>
+
+          {/* update button */}
           <button className="ui button blue">Update</button>
         </form>
       </div>

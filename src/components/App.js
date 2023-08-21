@@ -2,19 +2,19 @@
 import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {v4 as uuidv4} from 'uuid';
-// import api from "../api/contacts";
+// API
 import api from "../api/members";
+// components
 import "./App.css";
 import Header from "./Header";
 import AddMember from "./AddMember";
+import EditMember from "./EditMember";
 import MemberList from "./MemberList";
 import MemberDetail from "./MemberDetail";
-import EditMember from "./EditMember";
-import MemberCard from "./MemberCard";
 
 function App() {
   // States
-  const LOCAL_STORAGE_KEY = "members";
+  // const LOCAL_STORAGE_KEY = "members";
   const [members, setMembers] = useState([]);
 
   //RetrieveContacts
@@ -39,7 +39,7 @@ function App() {
   // Update Contacts
   const updateMemberHandler = async (member) => {
     const response = await api.put(`/members/${member.id}`, member);
-    const { id, name, job } = response.data;
+    const { id } = response.data;
     setMembers(
       members.map((member) => {
         return member.id === id ? { ...response.data } : member;
@@ -75,6 +75,8 @@ function App() {
       <Router>
         <Header />
         <Switch>
+
+          {/* main route */}
           <Route
             path="/"
             exact
@@ -86,6 +88,8 @@ function App() {
               />
             )}
           />
+
+          {/* add route */}
           <Route
             path="/add"
             render={(props) => (
@@ -95,6 +99,7 @@ function App() {
             )}
           />
 
+          {/* edit route */}
           <Route
             path="/edit"
             render={(props) => (
@@ -105,9 +110,11 @@ function App() {
             )}
           />
 
+          {/* member display route */}
           <Route 
               path="/member/:id" 
               component={MemberDetail} />
+
         </Switch>
       </Router>
     </div>

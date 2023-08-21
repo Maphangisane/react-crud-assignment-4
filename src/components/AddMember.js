@@ -1,6 +1,8 @@
+// Imports
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Component Function
 class AddMember extends React.Component {
 
   // Add State
@@ -21,6 +23,7 @@ class AddMember extends React.Component {
     this.props.history.push("/");
   };
 
+  // Component return using render
   render() {
     return (
       <div className="ui main">
@@ -39,7 +42,8 @@ class AddMember extends React.Component {
 
         {/* Add Form */}
         <form className="ui form" onSubmit={this.add}>
-          {/* name input */}
+
+          {/* name input field*/}
           <div className="field">
             <label>Name</label>
             <input
@@ -50,8 +54,8 @@ class AddMember extends React.Component {
               onChange={(e) => this.setState({ name: e.target.value })}
             />
           </div>
-          
-          {/* job input */}
+
+          {/* job input field*/}
           <div className="field">
             <label>Job Title</label>
             <input
